@@ -1,15 +1,29 @@
-#Agenda de contatos
-#Desenvolva um programa que permita ao usuário adicionar,\n
-#visualizar e editar contatos em uma agenda virtual.
+# Listas para adicionar os contatos
 contatos = []
 número = []
+
+# Input para o usuário adicionar o número à agenda
+
 número_contato = int(input('Novo número: '))
+
+# Condição para saber se o número obtem 13 dígitos
+
 if número_contato > 13 :
-    print('\033[31mERROR. Número de caracter excedido! Digite novamente. ')
+    print('\033[31mERROR. Número de caracteres excedido! Digite novamente. ')
     número_contato = int(input('\033[0mNovo número: '))
 nome_contato = str(input('Nome : ')).title()
+
+# Se as condições esitverem de acordo, são adicionados a listas
 número.append(número_contato)
 contatos.append(nome_contato)
+
+if número_contato in número:
+    print('Número já existente na lista!')
+else:
+    pass
+
+# Pequeno menu para saber se qual a próxima interação do usiário
+
 ver_lista_e_numero = int(input('Você deseja ver o contato ou edita-lo?\n '
                                '[1] Exibir \n'
                                ' [2] Não exibir\n '
@@ -55,7 +69,7 @@ while novo == 1:
         edit_contato = int(input('Edite o número:'))
         número.append(edit_contato)
 if novo == 2:
-  print('PROGRAMA ENCERRADO')
+    print('PROGRAMA ENCERRADO')
 
 
 
