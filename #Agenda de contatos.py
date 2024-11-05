@@ -1,61 +1,61 @@
-#Agenda de contatos
-#Desenvolva um programa que permita ao usuário adicionar,\n
-#visualizar e editar contatos em uma agenda virtual.
-contatos = []
-número = []
-número_contato = int(input('Novo número: '))
-if número_contato > 13 :
-    print('\033[31mERROR. Número de caracter excedido! Digite novamente. ')
-    número_contato = int(input('\033[0mNovo número: '))
-nome_contato = str(input('Nome : ')).title()
-número.append(número_contato)
-contatos.append(nome_contato)
-ver_lista_e_numero = int(input('Você deseja ver o contato ou edita-lo?\n '
-                               '[1] Exibir \n'
-                               ' [2] Não exibir\n '
-                               '[3] Editar '))
-if ver_lista_e_numero == 1:
-    número.append(número_contato)
-    contatos.append(nome_contato)
-    print(contatos[0])
-    print(número[0])
-elif ver_lista_e_numero == 2:
-    número.append(número_contato)
-    contatos.append(nome_contato)
-elif ver_lista_e_numero == 3:
-    edit_contato = int(input('Edite o número:'))
-    número.append(edit_contato)
-    print(contatos[-1],'\n', número[-1])
-novo = int(input('Deseja adicionar um novo contato? \n'
-                           '[1] Sim \n'
-                           '[2] Não '))
+# Listas para adicionar os contatos
+contatos = {}
+nome_contato = 0
+número_contato = 0
 
-while novo == 1:
-    número_contato = int(input('Novo número:'))
-    if número_contato > 13:
-        print('\033[31mERROR. Número de caracter excedido! Digite novamente. ')
-        número_contato = int(input('\033[0mNovo número: '))
-    nome_contato = str(input('Nome :')).title()
-    ver_lista_e_numero = int(input('Você deseja ver o contato adicinado ou edit-lo?'
-                                   '[1] Exibir \n '
-                                   '[2] Não exibir\n  '
-                                   '[3] Editar  '))
+# Laço para o menu de interação
+while True:
+# Pequeno menu para saber se qual a  interação do usuário
+    print('-='*25)
+    print('Menu de interação do usuário:')
+    print('-=' * 25)
+    ver_lista_e_numero = int(input(' [1] Exibir algum contato \n'
+                                   ' [2] Adicionar um novo contato\n '
+                                   '[3] Editar algum contato   \n '
+                                   '[4] Encerrar programa      \n'
+                                   '       '))
+# Condição para exibir o contato que usúario deseja ver
     if ver_lista_e_numero == 1:
-        número.append(número_contato)
-        contatos.append(nome_contato)
-        print(contatos[-1])
-        print(número[-1])
-    elif ver_lista_e_numero == 2:
-        número.append(número_contato)
-        contatos.append(nome_contato)
-        novo = int(input('Deseja adicionar um novo contato? \n'
-                           '[1] Exibir'
-                           ' [2] Não exibir '))
-    elif ver_lista_e_numero == 3:
-        edit_contato = int(input('Edite o número:'))
-        número.append(edit_contato)
-if novo == 2:
-  print('PROGRAMA ENCERRADO')
+        visualizar = str(input('Qual contato você deseja visualizar? ')).title()
+        print('_'*50)
+
+        if visualizar not in contatos.keys():
+            print('Este contato não existe na lista!')
 
 
+        else:
+            print(f'O número selecionado é: {contatos[visualizar]}')
 
+# Condição para o usuário adicinar um novo contato a lista
+
+    if ver_lista_e_numero == 2:
+        número_contato = int(input('Novo número: '))
+
+        nome_contato = str(input('Nome : ')).title()
+
+# Se as variáveis forem preenchidas, são adicionados ao dicionário
+        contatos[nome_contato] = número_contato
+# Pequena condição para ver se o contato já existe na lista
+
+        if número_contato not in contatos.values():
+            print('Contato já existente!')
+        else:
+            pass
+
+# Condição para o usuário editar algum contato já existente na lista
+    if ver_lista_e_numero == 3:
+        editar = str(input('Qual contato você deseja editar? ')).title()
+        if editar not in contatos.keys():
+            print('Este contato não está na lista !')
+        else:
+            contatos.pop(editar)
+            nome_contato = str(input('Nome : ')).title()
+            número_contato = int(input('Novo número: '))
+            contatos[nome_contato] = número_contato
+            print(f'Contato {nome_contato} atualizado com sucesso!')
+
+# Condição para encerrar o programa
+    if ver_lista_e_numero == 4:
+        break
+
+print('PROGRAMA ENCERRADO !')
