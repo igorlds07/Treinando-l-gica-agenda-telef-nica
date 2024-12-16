@@ -1,5 +1,5 @@
-import menuu
 
+import menuu
 # Listas para adicionar os contatos
 contatos = {}
 nome_contato = 0
@@ -14,6 +14,7 @@ while True:
 # Condição para exibir o contato que usúario deseja ver
     ver_lista_e_numero = int(input('Escolha sua opção: '))
 
+# Condição para exibir o contato que usúario deseja ver
     if ver_lista_e_numero == 1:
         visualizar = str(input('Qual contato você deseja visualizar? ')).title()
         print('_'*50)
@@ -22,8 +23,6 @@ while True:
             print('Este contato não existe na lista!')
         else:
             print(f'O número selecionado é: {contatos[visualizar]}')
-
-# Condição para o usuário adicinar um novo contato a lista
 
     if ver_lista_e_numero == 2:
         número_contato = int(input('Novo número: '))
